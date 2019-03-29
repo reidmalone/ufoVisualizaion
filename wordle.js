@@ -6,7 +6,9 @@ var fill = d3.scale.category20();
 //under here is the bulk of what takes forever really.
 d3.csv('ufo.csv', function (data) {
   var sightings=[];
-  data.forEach(function(row){
+  //the slice here takes the last 200 entries, could change the slice based upon year
+  //makes it more efficient
+  data.slice(-200).forEach(function(row){
     sightings.push({
       time: row.Time,
       city: row.City,
@@ -54,5 +56,5 @@ function drawCloud(words) {
     .attr("transform", function(d) {
       return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
     })
-    .text(function(d) { return d.desc; });
+    .text(function(d) { return d.shape; });
 }
