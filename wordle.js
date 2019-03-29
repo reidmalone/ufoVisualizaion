@@ -8,16 +8,17 @@ d3.csv('ufo.csv', function (data) {
   var sightings=[];
   //the slice here takes the last 200 entries, could change the slice based upon year
   //makes it more efficient
-  data.slice(-200).forEach(function(row){
+  data.slice(-2000).forEach(function(row){
     sightings.push({
       time: row.Time,
       city: row.City,
       state: row.State,
       country: row.Country,
-      shape: row.Shape,
+      text: row.Shape, //changed
       desc: row.Description,
-      size: 55
-
+      size: +row.Duration //this is what the size is on. This NEEDS to be
+      //something like the amount of occurrences of a single shape. So say triangle is
+      //listed 50 times, but cigar is listed 5. Then triangle is a lot bigger.
     });
 
   });
@@ -56,5 +57,6 @@ function drawCloud(words) {
     .attr("transform", function(d) {
       return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
     })
-    .text(function(d) { return d.shape; });
+    .text(function(d) { return d.text; });
 }
+
