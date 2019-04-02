@@ -52,5 +52,6 @@ function drawCloud(words) {
         .text(function (d) {
             return d.key;
         });
+
 }
 
