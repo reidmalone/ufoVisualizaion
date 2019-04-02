@@ -28,7 +28,7 @@
 
 <div class="topnav">
     <a href="index.html">Wordle</a>
-    <a class="active" href="#relation">Word Relation</a>
+    <a class="active" href="relation.html">Word Relation</a>
     <input type="text" placeholder="Search..">
   </div>
 
@@ -104,6 +104,8 @@
                         .append("svg:path")
                         .classed("link", true)
                         .attr("marker-end", "url(#end)");
+
+
 
                 var node = svg.selectAll(".node")
                         .data(force.nodes())
