@@ -27,17 +27,25 @@ d3.csv("ufo.csv", function(error, data) {
     } else {
         data = data
     }
+    //parseDate = d3.time.format("%m-%d-%Y").parse(data.Time)
+    dateData = data.map(d=>d.Time);
+    //shapeData = data.map(d=>d.Shape);
+    //lightshapes = data.filter(d=>d.Shape === "light");
+
 
     var dropDown = d3.select("#drop")
         .append("select")
-        .attr("name", "date");
+        .attr("name", "dates");
 
-    var date = data.Time.map(function(d, i) {
-        return d;
+    var newData = data.map(function(d) {
+        let newItem = {};
+        newItem.Time = d.Time;
+        newItem.Shape = d.Shape;
+        return newItem;
     })
 
     var options = dropDown.selectAll("option")
-        .data(date)
+        .data(dateData)
         .enter()
         .append("option")
         .text(function(d) {
@@ -50,18 +58,20 @@ d3.csv("ufo.csv", function(error, data) {
     dropDown.on("change", update);
 
     function update() {
-        var filteredData = sortObject(data, this.value);
+        selectedData = data.filter(d=>d.Time < "10/10/1971 23:4" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
+        shapeData = selectedData.map(d=>d.Shape);
+        //var filteredData = sortObject(newData, this.value);
         fontScale.domain([
-            d3.min(newValue, function(d) {
+            d3.min(shapeData, function(d) {
                 return d.value
             }),
-            d3.max(newValue, function(d) {
+            d3.max(shapeData, function(d) {
                 return d.value
             }),
         ]);
         d3.layout.cloud()
             .size([width, height])
-            .words(filteredData)
+            .words(shapeData)//changed from selectedDAta
             .rotate(0)
             .text(function(d) {
                 return d.label;
@@ -73,17 +83,17 @@ d3.csv("ufo.csv", function(error, data) {
             .on("end", draw)
             .start();
     }
-
+/*
     function sortObject(obj, date) {
         var newValue = [];
         var orgS = date || "11/11/1961";
         //var dateS = "Jan";
-        for (var shapes = 0; shapes < data.Shape.length; shapes++) {
-            var time = data.Time.indexOf(orgS);
+        for (var shapes = 0; shapes < shapeData.length; shapes++) {
+            var time = dateData.indexOf(orgS);
            // var date = data.dates.indexOf(dateS);
             newValue.push({
-                label: data.Shape[shapes],
-                value: data.values[shapes][time]
+                label: shapeData[shapes],
+                value: shapeData.values[shapes][time]
             });
         }
         newValue.sort(function(a, b) {
@@ -94,18 +104,20 @@ d3.csv("ufo.csv", function(error, data) {
     }
 
     var newValue = sortObject();
-
+*/
+    selectedData = data.filter(d=>d.Time < "10/10/1978 22:00" && d.Time>"10/10/1950 20:30");
+    shapeData = selectedData.map(d=>d.Shape);
     fontScale.domain([
-        d3.min(newValue, function(d) {
+        d3.min(shapeData, function(d) {
             return d.value
         }),
-        d3.max(newValue, function(d) {
+        d3.max(shapeData, function(d) {
             return d.value
         }),
     ]);
 
     d3.layout.cloud().size([width, height])
-        .words(newValue)
+        .words(shapeData)
         .rotate(0)
         .text(function(d) {
             return d.label;
