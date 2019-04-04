@@ -8,9 +8,9 @@ body, html {
 
 .svg {
     display: inline-block;
-    position: absolute;
-    top: +100;
-    left: +900;
+    position: relative;
+    left: 10px;
+    top: 10px;
 }
 
 #chart {
