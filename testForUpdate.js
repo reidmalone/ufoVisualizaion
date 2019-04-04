@@ -31,7 +31,9 @@ d3.csv("ufo.csv", function(error, data) {
     dateData = data.map(d=>d.Time);
     //shapeData = data.map(d=>d.Shape);
     //lightshapes = data.filter(d=>d.Shape === "light");
-
+    //nested = d3.nest().key(d=>d.Shape).entries(data);
+    //counting = nested.map(d=>{d.count=d.values.length; return d});
+    //selectedData = data.filter(d=>d.Time < "10/10/1971 23:4" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
 
     var dropDown = d3.select("#drop")
         .append("select")
@@ -43,88 +45,70 @@ d3.csv("ufo.csv", function(error, data) {
         newItem.Shape = d.Shape;
         return newItem;
     })
-
+    selectedData = newData.filter(d=>d.Time < "10/10/2005 23:40" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
+    nested = d3.nest().key(d=>d.Shape).entries(selectedData);
+    counting = nested.map(d=>{d.count=d.values.length; return d});
     var options = dropDown.selectAll("option")
-        .data(dateData)
+        .data(selectedData)
         .enter()
         .append("option")
         .text(function(d) {
-            return d;
+            return d.Time;
         })
         .attr("value", function(d) {
-            return d;
+            return d.Time;
         })
 
     dropDown.on("change", update);
 
     function update() {
-        selectedData = data.filter(d=>d.Time < "10/10/1971 23:4" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
-        shapeData = selectedData.map(d=>d.Shape);
-        //var filteredData = sortObject(newData, this.value);
+        selectedData = newData.filter(d=>d.Time < "10/10/2009 23:40" && d.Time>"10/10/1954 20:30"); //this is for the slider crap
+        nested = d3.nest().key(d=>d.Shape).entries(selectedData);
+        counting = nested.map(d=>{d.count=d.values.length; return d});
+
         fontScale.domain([
-            d3.min(shapeData, function(d) {
-                return d.value
+            d3.min(counting, function(d) {
+                return d.count
             }),
-            d3.max(shapeData, function(d) {
-                return d.value
+            d3.max(counting, function(d) {
+                return d.count
             }),
         ]);
         d3.layout.cloud()
             .size([width, height])
-            .words(shapeData)//changed from selectedDAta
+            .words(counting)//changed from selectedDAta
             .rotate(0)
             .text(function(d) {
-                return d.label;
+                return d.key; //maybe
             })
             .font("Impact")
             .fontSize(function(d) {
-                return fontScale(d.value)
+                return fontScale(d.count)
             })
             .on("end", draw)
             .start();
     }
-/*
-    function sortObject(obj, date) {
-        var newValue = [];
-        var orgS = date || "11/11/1961";
-        //var dateS = "Jan";
-        for (var shapes = 0; shapes < shapeData.length; shapes++) {
-            var time = dateData.indexOf(orgS);
-           // var date = data.dates.indexOf(dateS);
-            newValue.push({
-                label: shapeData[shapes],
-                value: shapeData.values[shapes][time]
-            });
-        }
-        newValue.sort(function(a, b) {
-            return b.value - a.value;
-        });
-        newValue.splice(10, 50)
-        return newValue;
-    }
 
-    var newValue = sortObject();
-*/
-    selectedData = data.filter(d=>d.Time < "10/10/1978 22:00" && d.Time>"10/10/1950 20:30");
-    shapeData = selectedData.map(d=>d.Shape);
+   // selectedData = data.filter(d=>d.Time < "10/10/1978 22:00" && d.Time>"10/10/1950 20:30");
+   // shapeData = selectedData.map(d=>d.Shape);
     fontScale.domain([
-        d3.min(shapeData, function(d) {
-            return d.value
+        d3.min(counting, function(d) {
+            return d.count
         }),
-        d3.max(shapeData, function(d) {
-            return d.value
+        d3.max(counting, function(d) {
+            return d.count
         }),
     ]);
 
     d3.layout.cloud().size([width, height])
-        .words(shapeData)
+        .words(counting)
         .rotate(0)
         .text(function(d) {
-            return d.label;
+            return d.key; //idk
         })
         .font("Impact")
         .fontSize(function(d) {
-            return fontScale(d.value)
+            return fontScale(d.count)
         })
         .on("end", draw)
         .start();
@@ -136,7 +120,7 @@ d3.csv("ufo.csv", function(error, data) {
         selectVis
             .enter().append("text")
             .style("font-size", function(d) {
-                return fontScale(d.value)
+                return fontScale(d.size)
             })
             .style("font-family", "Impact")
             .style("fill", function(d, i) {
@@ -147,14 +131,14 @@ d3.csv("ufo.csv", function(error, data) {
                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
             })
             .text(function(d) {
-                return d.label;
+                return d.key;
             })
 
         selectVis
             .transition()
             .duration(600)
             .style("font-size", function(d) {
-                return fontScale(d.value)
+                return fontScale(d.size)
             })
             .attr("transform", function(d) {
                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
