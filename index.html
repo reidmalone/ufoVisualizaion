@@ -12,7 +12,27 @@
     <link rel="stylesheet" href="main.css">
 
     <script src="d3.slider.js"></script>
+    <style>
+        html, body, #vis {
+            height: 100%;
+            margin: 0;
+        }
 
+        .tooltip {
+            position: absolute;
+            opacity: 0;
+            border: solid;
+            border-color: #333 transparent;
+            border-width: 6px 6px 0 6px;
+            bottom: 20px;
+            content: "";
+            left: 50%;
+            z-index: 99;
+        }
+
+
+
+    </style>
 </head>
 
 <body>
@@ -22,6 +42,7 @@
 </div>
 <div id="drop"></div>
 <div id="vis"></div>
+
 
 <script src="wordle.js"></script>
 
