@@ -49,9 +49,9 @@ d3.csv("ufo.csv", function(error, data) {
     newData.forEach(function(d,i){
         d.Time = d3.time.format("%d/%m/%Y %H:%M").parse(d.Time);
     });
-    console.log(newData);
+    //console.log(newData);
 
-    selectedData = newData.filter(d=>d.Time < new Date('10/10/2009') && d.Time>(new Date('10/10/1949'))); //this is for the slider crap
+    selectedData = newData.filter(d=>d.Time < new Date('9/9/2013') && d.Time>(new Date('10/10/1949'))); //this is for the slider crap
     nested = d3.nest().key(d=>d.Shape).entries(selectedData);
     counting = nested.map(d=>{d.count=d.values.length; return d});
     /*
@@ -89,8 +89,8 @@ d3.csv("ufo.csv", function(error, data) {
         const minDate = new Date(document.getElementById('minDate').value);
         const maxDate = new Date(document.getElementById('maxDate').value);
         //const maxDate = new Date(document.getElementById("selection2").value);
-        console.log(minDate);
-        console.log(maxDate);
+        //console.log(minDate);
+        //console.log(maxDate);
         selectedData = newData.filter(d=>d.Time <= maxDate && d.Time>= minDate); //"this" works?
         nested = d3.nest().key(d=>d.Shape).entries(selectedData);
         counting = nested.map(d=>{d.count=d.values.length; return d});
