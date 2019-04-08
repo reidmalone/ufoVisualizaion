@@ -29,13 +29,14 @@ d3.csv("ufo.csv", function(error, data) {
     //counting = nested.map(d=>{d.count=d.values.length; return d});
     //selectedData = data.filter(d=>d.Time < "10/10/1971 23:4" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
     let div = d3.select("body").append("div").attr("class", "tooltip").attr("opacity", 0);
-    var dropDown = d3.select("#drop")
-        .append("select")
-        .attr("name", "dates");
     /*
-    var dropDown = d3.select("#drop")
+    var dropDown1 = d3.select("#drop1")
         .append("select")
-        .attr("name", "dates");
+        .attr("id", "selection1");
+
+    var dropDown2 = d3.select("#drop2")
+        .append("select")
+        .attr("id", "selection2");
 */
     var newData = data.map(function(d) {
         let newItem = {};
@@ -46,51 +47,55 @@ d3.csv("ufo.csv", function(error, data) {
 
 //formats the date here
     newData.forEach(function(d,i){
-        d3.time.format("%Y-%m-%d").parse(d.Time);
-        return d;
+        d.Time = d3.time.format("%d/%m/%Y %H:%M").parse(d.Time);
     });
-    console.log(newData.Time);
+    console.log(newData);
 
-    selectedData = newData.filter(d=>d.Time < "10/10/2009 23:40" && d.Time>"10/10/1949 20:30"); //this is for the slider crap
+    selectedData = newData.filter(d=>d.Time < new Date('10/10/2009') && d.Time>(new Date('10/10/1949'))); //this is for the slider crap
     nested = d3.nest().key(d=>d.Shape).entries(selectedData);
     counting = nested.map(d=>{d.count=d.values.length; return d});
-    var options = dropDown.selectAll("option")
+    /*
+    var options1 = dropDown1.selectAll("option")
         .data(selectedData)
         .enter()
         .append("option")
         .text(function(d) {
             return d.Time;
         })
-        /*
-        .attr("value", function(d) {
-            return d.value;
-        })
 
 
-*/
-/*
     var options2 = dropDown2.selectAll("option")
         .data(selectedData)
         .enter()
         .append("option")
+
         .text(function(d) {
             return d.Time;
-        })
-    dropDown1.on("change", update(options1.value,options2.value));
+        });
 
- */
-    dropDown.on("change", update);
+    dropDown2.node().selectedIndex = selectedData.length-1;
+
+    dropDown1.on("change", update);
+    dropDown2.on("change", update);
+*/
+    //var dateControl = document.querySelector('input[type="date1"]');
+    //console.log(dateControl);
+
+   // dropDown.on("change", update);
+    document.getElementById("myBtn").onclick=update;
+
 
     function update() {
-
-
-        //selectedData = newData.filter(d=>d.Time < min && d.Time>max); //this is for the slider crap
-
-        selectedData = newData.filter(d=>d.Time < "10/10/2009 23:40" && d.Time>this.value); //this is for the slider crap
+        const minDate = new Date(document.getElementById('minDate').value);
+        const maxDate = new Date(document.getElementById('maxDate').value);
+        //const maxDate = new Date(document.getElementById("selection2").value);
+        console.log(minDate);
+        console.log(maxDate);
+        selectedData = newData.filter(d=>d.Time <= maxDate && d.Time>= minDate); //"this" works?
         nested = d3.nest().key(d=>d.Shape).entries(selectedData);
         counting = nested.map(d=>{d.count=d.values.length; return d});
 
-        //console.log(counting);
+
         fontScale.domain([
             d3.min(counting, function(d) {
                 return d.count
@@ -192,9 +197,6 @@ d3.csv("ufo.csv", function(error, data) {
         //endnew
 
     }
-
-//need help here too :)
-
 
 
 });
