@@ -1,0 +1,72 @@
+<html xmlns="html">
+    <head>
+        <title>UFO Map Test</title>
+<style> /* set the CSS */
+
+    body { font: 12px Arial;}
+
+    path { 
+        stroke: steelblue;
+        stroke-width: 2;
+        fill: none;
+    }
+
+    path:hover {
+        fill-opacity: .7;
+    }
+    div.tooltip {   
+        position: absolute;           
+        text-align: center;           
+        width: 120px;                  
+        height: 200px;                 
+        padding: 2px;             
+        font: 12px sans-serif;        
+        background: white;   
+        border: 2px;      
+        border-radius: 8px;           
+        pointer-events: none;  
+       
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 2;
+        shape-rendering: crispEdges;
+    }
+      #usMap {
+        margin: 0 auto;
+        height: 400px;
+        width: 40%;
+ 
+      }
+
+
+</style> 
+    </head>
+    <body>
+    <label for="night">Night of the:</label>
+    <input id="night" type="date" value="1949-10-10">
+
+    <button id="nightBtn">Update</button>
+
+    <div id="usMap">
+            <svg></svg>
+        </div>
+        <div id="ledger">
+        </div>
+
+        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="map.js"></script>
+    </body>
+    <body>
+
+
+
+
+
+
+</body>
+</html>
+
