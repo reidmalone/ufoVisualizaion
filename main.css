@@ -5,12 +5,12 @@
 }
 
 .node {
-    stroke: #fff;
+    stroke: rgb(151, 151, 151);
     stroke-width: 1.5px;
 }
 
 .node text {
-    font: 10px helvetica;
+    font: 12px serif;
     color: rgb(117, 117, 117)
   }
 
