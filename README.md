@@ -7,7 +7,7 @@ For our project we wanted to visualize UFO report data. We did this by making a 
 Reid Malone's contributions:
 
 I was responsible for the word cloud. This takes in all of the data from a set range (which the user can set if they want) and displays
-the top shape that was reported within the given time period.
+the top shape that was reported within the given time period. The word cloud works by setting the font size based upon how many occurances there were of that certain shape. The word cloud was inspired and used a library from https://github.com/jasondavies/d3-cloud.
 
 Something that I noticed is that "Light" was always the number one shape. As you can see below in the two different date ranges.
 
