@@ -2,7 +2,7 @@
 
 [![Video of project2!](https://img.youtube.com/vi/iib3iEO6wPU/0.jpg)](https://www.youtube.com/watch?v=iib3iEO6wPU)
 
-For our project we wanted to visualize UFO report data. We did this by making a word cloud, a relation diagram as well as a map relation. The dataset used was a pre-made .csv file obtained here: https://github.com/planetsig/ufo-reports. It was almost comical seeing the amount of reports on the 4th of July each year. I guess that's when all the UFO's come out.
+For our project we wanted to visualize UFO report data. We did this by making a word cloud, a relation diagram as well as a map relation. The dataset used was a pre-made .csv file obtained here: https://github.com/planetsig/ufo-reports. It was almost comical seeing the amount of reports on the 4th of July each year.
 
 Reid Malone's contributions:
 
