@@ -18,3 +18,5 @@ Something that I noticed is that "Light" was always the number one shape. As you
 Tori Huckabe's contributions:
 
 Todd Robinson's contributions:
+
+I designed the Force-Directed Relational Graph. I decided to find the relationship between the shapes of the UFO's reported, and the words used to describe each of them individually. The graph includes a search function to find any specific node, and hovering to display all first-order neighbors of any particular node. For my findings I saw that although there are several different shapes, each one had mostly the same terms used to describe them.
