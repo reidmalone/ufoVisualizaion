@@ -1,16 +1,16 @@
 
 .link {
-    stroke: #999;
+    stroke: lightgray;
     stroke-opacity: .6;
 }
 
 .node {
-    stroke: #fff;
+    stroke: rgb(151, 151, 151);
     stroke-width: 1.5px;
 }
 
 .node text {
-    font: 10px helvetica;
+    font: 14px serif;
     color: rgb(117, 117, 117)
   }
 

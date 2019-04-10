@@ -1,145 +1,60 @@
 <html>
-    <head>
-        <title>D3 Force Layout Example 1</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="main.css">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-        <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"> </script>
-        <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> </script>
-        <script type='text/javascript' src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"> </script>
+
+<head>
+  <title>D3 Force Layout Example 1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js">
+  </script>
+  <script type='text/javascript' src="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  </script>
+  <script type='text/javascript' src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js">
+  </script>
 
 
-<script type="application/json" id="ufo">
-    {
-        "nodes": [{
-            "name": "Unkown",
-                "group": 1
-        }, {
-            "name": "Lights",
-            "group": 2
-        }, {
-            "name": "Sky",
-                "group": 2
-        }, {
-            "name": "Object",
-                "group": 2
-        }, {
-            "name": "Moving",
-                "group": 2
-        }, {
-            "name": "Bright",
-                "group": 2
-        }, {
-            "name": "White",
-                "group": 2
-        }, {
-            "name": "Red",
-                "group": 2
-        }, {
-            "name": "Flying",
-                "group": 2
-        }, {
-            "name": "Night",
-                "group": 2
-        }, {
-            "name": "Orange",
-                "group": 2
-            }, {
-                "name": "Triangle",
-                "group": 1
-            }, {
-                "name": "Craft",
-                    "group": 2
-            }, {
-                "name": "Shaped",
-                    "group": 2
-        }],
-            "links": [{
-            "source": 1,
-                "target": 0,
-                "value": 14.76
-        }, {
-            "source": 2,
-                "target": 0,
-                "value": 11.40
-        }, {
-            "source": 3,
-                "target": 0,
-                "value": 10.12
-        }, {
-            "source": 4,
-                "target": 0,
-                "value": 6.69
-        }, {
-            "source": 5,
-                "target": 0,
-                "value": 6.51
-        }, {
-            "source": 6,
-                "target": 0,
-                "value": 4.49
-        }, {
-            "source": 7,
-                "target": 0,
-                "value": 4.03
-        }, {
-            "source": 8,
-                "target": 0,
-                "value": 3.41
-        }, {
-            "source": 9,
-                "target": 0,
-                "value": 3.25
-        }, {
-            "source": 10,
-                "target": 0,
-                "value": 2.96
-            }, {
-                "source": 1,
-                    "target": 11,
-                    "value": 26.74
-            }, {
-                "source": 3,
-                    "target": 11,
-                    "value": 15.28
-            }, {
-                "source": 12,
-                    "target": 11,
-                    "value": 13.86
-            }, {
-                "source": 13,
-                    "target": 11,
-                    "value": 12.75
-            }, {
-                "source": 5,
-                    "target": 11,
-                    "value": 6.15
-            }, {
-                "source": 4,
-                    "target": 11,
-                    "value": 4.03
-            }, {
-                "source": 6,
-                    "target": 11,
-                    "value": 7.18
-            }, {
-                "source": 7,
-                    "target": 11,
-                    "value": 6.69
-            }, {
-                "source": 8,
-                    "target": 11,
-                    "value": 6.68
-            }, {
-                "source": 2,
-                    "target": 11,
-                    "value": 10.05
-        }]
+  <script type="application/json" id="ufo">
+    { "nodes": [{ "name": "Unkown", "group": 1 }, { "name": "Lights", "group": 2 }, { "name": "Sky", "group": 2 }, { "name": "Object", "group": 2 }, { "name": "Moving", "group": 2 }, { "name": "Bright", "group": 2 }, { "name": "White", "group": 2 }, { "name":
+    "Red", "group": 2 }, { "name": "Flying", "group": 2 }, { "name": "Night", "group": 2 }, { "name": "Orange", "group": 2 }, { "name": "Triangle", "group": 1 }, { "name": "Craft", "group": 2 }, { "name": "Shaped", "group": 2 }, { "name": "Changing",
+    "group": 1 }, { "name": "Note", "group": 2 }, { "name": "Ufo", "group": 2 }, { "name": "Cigar", "group": 1 }, { "name": "Silver", "group": 2 }, { "name": "Sphere", "group": 1 }, { "name": "Orb", "group": 2 }, { "name": "Ball", "group": 2 }, { "name":
+    "Glowing", "group": 2 }, { "name": "Oval", "group": 1 }, { "name": "Other", "group": 1 }, { "name": "Star", "group": 2 }, { "name": "Light", "group": 1 }, { "name": "Across", "group": 2 }, { "name": "Out", "group": 2 }, { "name": "Fireball", "group":
+    1 }, { "name": "Fire", "group": 2 }, { "name": "Green", "group": 2 }, { "name": "Circle", "group": 1 }, { "name": "Circular", "group": 2 }, { "name": "Round", "group": 2 }, { "name": "Disk", "group": 1 }, { "name": "Saucer", "group": 2 }, { "name":
+    "Hovering", "group": 2 }, { "name": "Disc", "group": 2 }, { "name": "Formation", "group": 1 }, { "name": "Cylinder", "group": 1 }, { "name": "Cylindrical", "group": 2 }, { "name": "Chevron", "group": 1 }, { "name": "Boomerang", "group": 2 }, { "name":
+    "Cone", "group": 1 }], "links": [{ "source": 1, "target": 0, "value": 14.76 }, { "source": 2, "target": 0, "value": 11.40 }, { "source": 3, "target": 0, "value": 10.12 }, { "source": 4, "target": 0, "value": 6.69 }, { "source": 5, "target": 0, "value":
+    6.51 }, { "source": 6, "target": 0, "value": 4.49 }, { "source": 7, "target": 0, "value": 4.03 }, { "source": 8, "target": 0, "value": 3.41 }, { "source": 9, "target": 0, "value": 3.25 }, { "source": 10, "target": 0, "value": 2.96 }, { "source": 1,
+    "target": 11, "value": 26.74 }, { "source": 3, "target": 11, "value": 15.28 }, { "source": 12, "target": 11, "value": 13.86 }, { "source": 13, "target": 11, "value": 12.75 }, { "source": 5, "target": 11, "value": 6.15 }, { "source": 4, "target": 11,
+    "value": 4.03 }, { "source": 6, "target": 11, "value": 7.18 }, { "source": 7, "target": 11, "value": 6.69 }, { "source": 8, "target": 11, "value": 6.68 }, { "source": 2, "target": 11, "value": 10.05 }, { "source": 3, "target": 14, "value": 4.62 },
+    { "source": 1, "target": 14, "value": 3.92 }, { "source": 2, "target": 14, "value": 3.59 }, { "source": 13, "target": 14, "value": 3.35 }, { "source": 5, "target": 14, "value": 2.00 }, { "source": 4, "target": 14, "value": 1.62 }, { "source": 6, "target":
+    14, "value": 1.47 }, { "source": 7, "target": 14, "value": 1.24 }, { "source": 15, "target": 14, "value": 1.24 }, { "source": 16, "target": 14, "value": 1.15 }, { "source": 10, "target": 14, "value": 1.14 }, { "source": 13, "target": 17, "value":
+    7.11 }, { "source": 3, "target": 17, "value": 7.02 }, { "source": 12, "target": 17, "value": 2.85 }, { "source": 1, "target": 17, "value": 2.48 }, { "source": 16, "target": 17, "value": 1.64 }, { "source": 4, "target": 17, "value": 1.62 }, { "source":
+    6, "target": 17, "value": 1.48 }, { "source": 5, "target": 17, "value": 1.47 }, { "source": 7, "target": 17, "value": 1.44 }, { "source": 18, "target": 17, "value": 1.06 }, { "source": 2, "target": 19, "value": 9.97 }, { "source": 3, "target": 19,
+    "value": 8.74 }, { "source": 1, "target": 19, "value": 7.49 }, { "source": 4, "target": 19, "value": 6.21 }, { "source": 10, "target": 19, "value": 6.20 }, { "source": 5, "target": 19, "value": 4.93 }, { "source": 6, "target": 19, "value": 4.22 },
+    { "source": 7, "target": 19, "value": 3.58 }, { "source": 20, "target": 19, "value": 3.37 }, { "source": 21, "target": 19, "value": 3.12 }, { "source": 22, "target": 19, "value": 2.97 }, { "source": 3, "target": 23, "value": 9.48 }, { "source": 2,
+    "target": 23, "value": 6.78 }, { "source": 1, "target": 23, "value": 5.67 }, { "source": 13, "target": 23, "value": 4.29 }, { "source": 4, "target": 23, "value": 3.71 }, { "source": 5, "target": 23, "value": 3.41 }, { "source": 12, "target": 23, "value":
+    3.36 }, { "source": 10, "target": 23, "value": 2.72 }, { "source": 6, "target": 23, "value": 2.69 }, { "source": 8, "target": 23, "value": 2.50 }, { "source": 16, "target": 23, "value": 2.45 }, { "source": 3, "target": 24, "value": 13.63 }, { "source":
+    1, "target": 24, "value": 10.22 }, { "source": 2, "target": 24, "value": 9.57 }, { "source": 13, "target": 24, "value": 6.62 }, { "source": 4, "target": 24, "value": 5.62 }, { "source": 5, "target": 24, "value": 4.41 }, { "source": 12, "target": 24,
+    "value": 4.33 }, { "source": 6, "target": 24, "value": 3.79 }, { "source": 16, "target": 24, "value": 3.12 }, { "source": 9, "target": 24, "value": 2.57 }, { "source": 25, "target": 24, "value": 2.25 }, { "source": 1, "target": 26, "value": 75.90
+    }, { "source": 2, "target": 26, "value": 42.64 }, { "source": 5, "target": 26, "value": 29.28 }, { "source": 4, "target": 26, "value": 26.92 }, { "source": 6, "target": 26, "value": 16.94 }, { "source": 3, "target": 26, "value": 14.05 }, { "source":
+    27, "target": 26, "value": 9.62 }, { "source": 9, "target": 26, "value": 9.58 }, { "source": 25, "target": 26, "value": 9.05 }, { "source": 15, "target": 26, "value": 8.96 }, { "source": 28, "target": 26, "value": 8.81 }, { "source": 2, "target":
+    29, "value": 16.65 }, { "source": 10, "target": 29, "value": 9.52 }, { "source": 1, "target": 29, "value": 8.51 }, { "source": 21, "target": 29, "value": 6.87 }, { "source": 3, "target": 29, "value": 6.30 }, { "source": 4, "target": 29, "value": 6.24
+    }, { "source": 30, "target": 29, "value": 4.96 }, { "source": 27, "target": 29, "value": 4.79 }, { "source": 31, "target": 29, "value": 4.39 }, { "source": 5, "target": 29, "value": 5.86 }, { "source": 7, "target": 29, "value": 3.89 }, { "source":
+    2, "target": 32, "value": 17.68 }, { "source": 3, "target": 32, "value": 16.39 }, { "source": 1, "target": 32, "value": 15.44 }, { "source": 4, "target": 32, "value": 9.69 }, { "source": 5, "target": 32, "value": 9.37 }, { "source": 10, "target":
+    32, "value": 8.56 }, { "source": 7, "target": 32, "value": 6.13 }, { "source": 33, "target": 32, "value": 7.82 }, { "source": 34, "target": 32, "value": 5.87 }, { "source": 8, "target": 32, "value": 5.06 }, { "source": 6, "target": 32, "value": 7.51
+    }, { "source": 3, "target": 35, "value": 11.12 }, { "source": 1, "target": 35, "value": 8.74 }, { "source": 13, "target": 35, "value": 7.54 }, { "source": 36, "target": 35, "value": 6.53 }, { "source": 2, "target": 35, "value": 6.35 }, { "source":
+    12, "target": 35, "value": 4.84 }, { "source": 16, "target": 35, "value": 4.50 }, { "source": 38, "target": 35, "value": 4.23 }, { "source": 37, "target": 35, "value": 3.90 }, { "source": 8, "target": 35, "value": 3.85 }, { "source": 5, "target":
+    35, "value": 3.54 }, { "source": 1, "target": 39, "value": 12.04 }, { "source": 2, "target": 39, "value": 4.44 }, { "source": 4, "target": 39, "value": 3.29 }, { "source": 3, "target": 39, "value": 3.03 }, { "source": 10, "target": 39, "value": 2.31
+    }, { "source": 8, "target": 39, "value": 2.30 }, { "source": 5, "target": 39, "value": 2.28 }, { "source": 7, "target": 39, "value": 2.08 }, { "source": 6, "target": 39, "value": 1.72 }, { "source": 27, "target": 39, "value": 1.29 }, { "source": 9,
+    "target": 39, "value": 1.27 }, { "source": 3, "target": 40, "value": 4.47 }, { "source": 2, "target": 40, "value": 2.15 }, { "source": 14, "target": 40, "value": 1.81 }, { "source": 1, "target": 40, "value": 1.43 }, { "source": 12, "target": 40, "value":
+    1.11 }, { "source": 5, "target": 40, "value": 1.05 }, { "source": 8, "target": 40, "value": 1.02 }, { "source": 4, "target": 40, "value": 1.01 }, { "source": 41, "target": 40, "value": 1 }, { "source": 6, "target": 40, "value": 1 }, { "source": 16,
+    "target": 40, "value": 1 }, { "source": 13, "target": 42, "value": 2.78 }, { "source": 2, "target": 42, "value": 2.7 }, { "source": 12, "target": 42, "value": 1.5 }, { "source": 2, "target": 42, "value": 1.3 }, { "source": 4, "target": 42, "value":
+    1.01 }, { "source": 8, "target": 42, "value": 1 }, { "source": 6, "target": 42, "value": 1 }, { "source": 43, "target": 42, "value": 1 }, { "source": 9, "target": 42, "value": 1 }, { "source": 5, "target": 42, "value": 1 }, { "source": 39, "target":
+    42, "value": 1 }, { "source": 3, "target": 44, "value": 1 }, { "source": 13, "target": 44, "value": 1 }, { "source": 1, "target": 44, "value": 1 }, { "source": 2, "target": 44, "value": 1 }, { "source": 5, "target": 44, "value": 1 }, { "source": 6,
+    "target": 44, "value": 1 }, { "source": 15, "target": 44, "value": 1 }, { "source": 4, "target": 44, "value": 1 }, { "source": 12, "target": 44, "value": 1 }, { "source": 10, "target": 44, "value": 1 }, { "source": 37, "target": 44, "value": 1 }]
     }
-</script>
-<!--comment to fix git-->
-<div class="topnav">
+  </script>
+  <!--comment to fix git-->
+  <div class="topnav">
     <a href="index.html">Wordle</a>
     <a class="active" href="relation.html">Word Relation</a>
     <a href="map.html">Location Data</a>
@@ -147,156 +62,156 @@
   </div>
   <div class="ui-widget">
     <input id="search">
-     <button type="button" onclick="searchNode()">Search</button>
- </div>
+    <button type="button" onclick="searchNode()">Search</button>
+  </div>
 
-    </head>
-    <body>
-        <script>
+</head>
 
-//Constants for the SVG
-var width = 500,
-    height = 500;
+<body>
+  <script>
+    //Constants for the SVG
+    var width = 900,
+      height = 900;
 
-//Set up the colour scale
-var color = d3.scale.category20();
+    //Set up the colour scale
+    var color = d3.scale.category20();
 
-//Set up the force layout
-var force = d3.layout.force()
-    .charge(-120)
-    .linkDistance(30)
-    .size([width, height]);
+    //Set up the force layout
+    var force = d3.layout.force()
+      .charge(-120)
+      .linkDistance(140)
+      .size([width, height]);
 
-//Append a SVG to the body of the html page. Assign this SVG as an object to svg
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    //Append a SVG to the body of the html page. Assign this SVG as an object to svg
+    var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
 
+    //Read the data from the mis element 
+    var ufo = document.getElementById('ufo').innerHTML;
+    graph = JSON.parse(ufo);
 
-//Read the data from the mis element 
-var ufo = document.getElementById('ufo').innerHTML;
-graph = JSON.parse(ufo);
+    //Creates the graph data structure out of the json data
+    force.nodes(graph.nodes)
+      .links(graph.links)
+      .start();
 
-//Creates the graph data structure out of the json data
-force.nodes(graph.nodes)
-    .links(graph.links)
-    .start();
+    //Create all the line svgs but without locations yet
+    var link = svg.selectAll(".link")
+      .data(graph.links)
+      .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) {
+        return Math.sqrt(d.value);
+      });
 
-//Create all the line svgs but without locations yet
-var link = svg.selectAll(".link")
-    .data(graph.links)
-    .enter().append("line")
-    .attr("class", "link")
-    .style("stroke-width", function (d) {
-    return Math.sqrt(d.value);
-});
-
-//Do the same with the circles for the nodes - no 
-//Changed
-var node = svg.selectAll(".node")
-    .data(graph.nodes)
-    .enter().append("g")
-    .attr("class", "node")
-    .call(force.drag);
-node.append("circle")
-    .attr("r", 8)
-    .style("fill", function (d) {
-    return color(d.group);
-})
-node.append("text")
+    //Do the same with the circles for the nodes - no 
+    //Changed
+    var node = svg.selectAll(".node")
+      .data(graph.nodes)
+      .enter().append("g")
+      .attr("class", "node")
+      .call(force.drag);
+    node.append("circle")
+      .attr("r", 8)
+      .style("fill", function(d) {
+        return color(d.group);
+      })
+    node.append("text")
       .attr("dx", 10)
       .attr("dy", ".35em")
-      .text(function(d) { return d.name })
+      .text(function(d) {
+        return d.name
+      })
       .style("stroke", "black");
 
 
-
-//Now we are giving the SVGs co-ordinates - the force layout is generating the co-ordinates which this code is using to update the attributes of the SVG elements
-force.on("tick", function () {
-    link.attr("x1", function (d) {
-        return d.source.x;
-    })
-        .attr("y1", function (d) {
-        return d.source.y;
-    })
-        .attr("x2", function (d) {
-        return d.target.x;
-    })
-        .attr("y2", function (d) {
-        return d.target.y;
+    //Now we are giving the SVGs co-ordinates - the force layout is generating the co-ordinates which this code is using to update the attributes of the SVG elements
+    force.on("tick", function() {
+      link.attr("x1", function(d) {
+          return d.source.x;
+        })
+        .attr("y1", function(d) {
+          return d.source.y;
+        })
+        .attr("x2", function(d) {
+          return d.target.x;
+        })
+        .attr("y2", function(d) {
+          return d.target.y;
+        });
+      d3.selectAll("circle").attr("cx", function(d) {
+          return d.x;
+        })
+        .attr("cy", function(d) {
+          return d.y;
+        });
+      d3.selectAll("text").attr("x", function(d) {
+          return d.x;
+        })
+        .attr("y", function(d) {
+          return d.y;
+        });
     });
-    d3.selectAll("circle").attr("cx", function (d) {
-        return d.x;
-    })
-        .attr("cy", function (d) {
-        return d.y;
+
+
+    // source or target properties match the hovered node.
+    node.on('mouseover', function(d) {
+      link.style('stroke', function(l) {
+        if (d === l.source || d === l.target)
+          return 'black';
+        else
+          return 'lightgray';
+      });
     });
-    d3.selectAll("text").attr("x", function (d) {
-        return d.x;
-    })
-        .attr("y", function (d) {
-        return d.y;
+
+
+
+    // Set the stroke width back to normal when mouse leaves the node.
+    node.on('mouseout', function() {
+      link.style('stroke', 'lightgray');
     });
-});
 
 
-// source or target properties match the hovered node.
-node.on('mouseover', function(d) {
-  link.style('stroke-width', function(l) {
-    if (d === l.source || d === l.target)
-      return 8;
-    else
-      return 2;
-    });
-});
+    var optArray = [];
+    for (var i = 0; i < graph.nodes.length - 1; i++) {
+      optArray.push(graph.nodes[i].name);
+    }
 
+    optArray = optArray.sort();
 
-
-// Set the stroke width back to normal when mouse leaves the node.
-node.on('mouseout', function() {
-  link.style('stroke-width', 2);
-});
-
-
-var optArray = [];
-for (var i = 0; i < graph.nodes.length - 1; i++) {
-    optArray.push(graph.nodes[i].name);
-}
-
-optArray = optArray.sort();
-
-$(function () {
-    $("#search").autocomplete({
+    $(function() {
+      $("#search").autocomplete({
         source: optArray
+      });
     });
-});
 
 
-function searchNode() {
+    function searchNode() {
 
-    //find the node
+      //find the node
 
-    var selectedVal = document.getElementById('search').value;
-    var node = svg.selectAll(".node");
+      var selectedVal = document.getElementById('search').value;
+      var node = svg.selectAll(".node");
 
-    if (selectedVal == "none") {
+      if (selectedVal == "none") {
         node.style("stroke", "white").style("stroke-width", "1");
-    } else {
-        var selected = node.filter(function (d, i) {
-            return d.name != selectedVal;
+      } else {
+        var selected = node.filter(function(d, i) {
+          return d.name != selectedVal;
         });
         selected.style("opacity", "0");
         var link = svg.selectAll(".link")
         link.style("opacity", "0");
         d3.selectAll(".node, .link").transition()
-            .duration(5000)
-            .style("opacity", 1);
+          .duration(5000)
+          .style("opacity", 1);
 
 
+      }
     }
-}
-            
-        </script>
-    </body>
+  </script>
+</body>
+
 </html>
