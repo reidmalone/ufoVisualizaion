@@ -16,6 +16,7 @@ var stateNames = [
     'Tennessee','Texas','Utah','Virginia','Vermont','Washington','Wisconsin','West_Virginia','Wyoming'
     ];
 
+// Color list created using: https://gka.github.io/palettes/#colors=#1147FF,#86D8FF,#FFEF67,#FF7D11,#F30000|steps=7|bez=0|coL=0
 var colors = ['#0000ff','#7000b5','#6d0a6d','#281027','#454316','#d7d613','#a1c800','#008000','#af6600','#ff3800','#ff8700','#e5831c','#b23e29','#cf6c6b','#ffc0cb'];
 
 var div2 = d3.select("#usMap")
