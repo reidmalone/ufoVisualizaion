@@ -11,9 +11,9 @@ the top shape that was reported within the given time period.
 
 Something that I noticed is that "Light" was always the number one shape. As you can see below in the two different date ranges.
 
-Image 1 here
+![1949-2009](image2.png)
 
-image 2 here
+![2003-2009](image1.png)
 
 Tori Huckabe's contributions:
 
