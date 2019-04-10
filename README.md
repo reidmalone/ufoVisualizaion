@@ -7,7 +7,7 @@ For our project we wanted to visualize UFO report data. We did this by making a 
 Reid Malone's contributions:
 
 I was responsible for the word cloud. This takes in all of the data from a set range (which the user can set if they want) and displays
-the top shape that was reported within the given time period. The word cloud works by setting the font size based upon how many occurances there were of that certain shape. The word cloud was inspired and used a library from https://github.com/jasondavies/d3-cloud.
+the top shape that was reported within the given time period. The word cloud works by setting the font size based upon how many occurances there were of that certain shape. The word cloud was inspired by and used a library from https://github.com/jasondavies/d3-cloud.
 
 Something that I noticed is that "Light" was always the number one shape. As you can see below in the two different date ranges.
 
@@ -19,6 +19,8 @@ Tori Huckabe's contributions:
 
 Todd Robinson's contributions:
 
-I designed the Force-Directed Relational Graph. I decided to find the relationship between the shapes of the UFO's reported, and the words used to describe each of them individually. The graph includes a search function to find any specific node, and hovering to display all first-order neighbors of any particular node. For my findings I saw that although there are several different shapes, each one had mostly the same terms used to describe them.
+I designed the Force-Directed Relational Graph. I decided to find the relationship between the shapes of the UFO's reported, and the words used to describe each of them individually. The graph includes a search function to find any specific node, and hovering to display all first-order neighbors of any particular node. 
+
+For my findings I saw that although there are several different shapes, each one had mostly the same terms used to describe them.
 
 ![Relationship](Ufo-data.JPG)
