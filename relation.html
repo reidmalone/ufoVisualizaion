@@ -69,8 +69,8 @@
 <body>
   <script>
     //Constants for the SVG
-    var width = 500,
-      height = 500;
+    var width = 800,
+      height = 800;
 
     //Set up the colour scale
     var color = d3.scale.category20();
@@ -159,11 +159,11 @@
 
     // source or target properties match the hovered node.
     node.on('mouseover', function(d) {
-      link.style('stroke-width', function(l) {
+      link.style('stroke', function(l) {
         if (d === l.source || d === l.target)
-          return 6;
+          return 'black';
         else
-          return 2;
+          return 'lightgray';
       });
     });
 
@@ -171,7 +171,7 @@
 
     // Set the stroke width back to normal when mouse leaves the node.
     node.on('mouseout', function() {
-      link.style('stroke-width', 2);
+      link.style('stroke', 'lightgray');
     });
 
 
