@@ -58,7 +58,7 @@ function processData()
                 .key(function(d) { return d.Shape; })
                 .rollup(function(v) { return v.length; })
                 .entries(data).sort(function(a,b){
-                  return (a.values - b.values);
+                  return (b.values - a.values);
                 });
 
                 var shapes = [];
@@ -66,10 +66,13 @@ function processData()
                   {
                     shapes.push(d.key);
                   });
-
-            console.log(data[1]);
-            var us_data = data.
-        filter(function(d)
+               var shapeNames = shapes.filter(function(d){return(d != "unknown"&&d!=""&& d != "other");})
+               shapeNames.push("unknown");
+               shapeNames.push("");
+               shapeNames.push("other");
+               shapes = shapeNames;
+            console.log(shapeCount);
+            var us_data = data.filter(function(d)
             {
                 return(d.Country == "us" || d.State != "");
             }).filter(
@@ -79,6 +82,31 @@ function processData()
                 var len = arr.length;
                 return(len > 1);
             });
+            shapeNames.splice(15, 0, "Everything Else");
+            var allColors = colors;
+            allColors.push("gray");
+              var legend = d3.select("#legendSpace").select("svg")
+            .attr("class", "legend")
+          .attr("width", 150)
+          .attr("height", 500)
+          .selectAll("g")
+          .data(allColors)
+          .enter()
+          .append("g")
+          .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+    legend.append("rect")
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d){return d;});
+
+    legend.append("text")
+        .data(shapeNames)
+          .attr("x", 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .text(function(d){return d;});
+
 
         makeMap();
        // makeCalendar(us_data);
@@ -196,19 +224,15 @@ function processData()
               mapSvg.selectAll(".pin")
               .data(pointArr)
               .enter().append("circle")
-              .attr("r", 3)
-              .attr("fill", function(d){
-                if(d.Shape in shapes)
-                  console.log
-              })
+              .attr("r", 5)
               .attr("fill",function(d)
                 {
                   console.log("Shape: "+d.Shape +" index: "+ (shapes.indexOf(d.Shape)-15));
                   if(d.Shape == "Other" || d.Shape == "")
-                    return "red";
-                  if(shapes.indexOf(d.Shape) >= 15)
-                    return (colors[((shapes.indexOf(d.Shape)*3)%15)]);
-                  return "red";
+                    return "gray";
+                  if(shapes.indexOf(d.Shape) <= 15)
+                    return (colors[shapes.indexOf(d.Shape)]);
+                  return "gray";
                  })
               .attr("transform", function(d) {
                 //console.log(d);
