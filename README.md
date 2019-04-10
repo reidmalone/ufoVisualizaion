@@ -21,4 +21,4 @@ Todd Robinson's contributions:
 
 I designed the Force-Directed Relational Graph. I decided to find the relationship between the shapes of the UFO's reported, and the words used to describe each of them individually. The graph includes a search function to find any specific node, and hovering to display all first-order neighbors of any particular node. For my findings I saw that although there are several different shapes, each one had mostly the same terms used to describe them.
 
-![Relationship](Ufo-data.jpg)
+![Relationship](Ufo-data.JPG)
