@@ -20,10 +20,10 @@ Victoria Huckabee's contributions:
 I was responsible for the geo-location data. The logitude and latitude was ploted on a map of the the US using D3. Each color corresponds to a shape that was reported with the top 15 shapes having a unique color. The goal of this coloring was to be able to identify if people are seeing the same thing at night, this would be identifiable by seeing clusters of the same color dots on the map. You can also hover your mouse over one of the dots to see the shape, time and description associated with it. Finally, you can select the night that you want to view the data for from the top righthand selection. You can choose just one day at a time so that you won't be overwhelmed with data and can determine a trend for the night. Global trends for the geo-location data would not be very revealing for analysis.
 
 The day with the second most reported was 11/16/1999 and when we look at that date we can see that a lot of the points are the same color and localized in the same area. We can conclude that some of these people might have been seeing the same thing. This can be visualized by the screenshot below:
-![Relationship](11161999.png)
+![Nov1699](11161999.png)
 
 This is in contrast to the day with the most sightings which is 7/4/2010. This is July 4th where people commonly shoot off fireworks so seeing unidentified objects in the sky might be because of that. There is also a rather large range of shapes that are reported and they are fairly spread out location wise as seen below:
-![Relationship](July4.png)
+![July4th](July4.png)
 
 Todd Robinson's contributions:
 
